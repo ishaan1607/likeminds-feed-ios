@@ -37,7 +37,7 @@ jobs:
           git config --global user.name "$(git log -n 1 --pretty=format:%an)"
           git config --global user.email "$(git log -n 1 --pretty=format:%ae)"
           # Create and push a Git tag with the new version
-          current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $4}')
+          current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $2}')
           git tag -a "$current_version" -m "Version $current_version"
           git push origin "$current_version"
         env:
