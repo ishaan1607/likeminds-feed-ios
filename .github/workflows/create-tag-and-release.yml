@@ -42,8 +42,8 @@ jobs:
         
                 # Push a Git tag with the new version
                 export current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $2}' | tr -d '\n' | sed 's/[^0-9.]//g; s/\..$//')
-                git tag -a "v$current_version" -m "Version $current_version"
-                git push origin "v$current_version"
+                git tag -a "$current_version" -m "Version $current_version"
+                git push origin "$current_version"
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     create-github-release:
