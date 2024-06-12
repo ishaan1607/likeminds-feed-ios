@@ -54,7 +54,7 @@ jobs:
       - name: Create Release
         run: |
           # Get the current version from the previous step
-          current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $4}')
-          gh release create "$current_version" --generate-notes
+          current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $2}')
+          gh release create "v$current_version" --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
