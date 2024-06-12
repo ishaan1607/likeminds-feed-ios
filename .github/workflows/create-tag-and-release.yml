@@ -21,7 +21,7 @@ jobs:
           previous_version=$(git describe --tags --abbrev=0)
           echo "Previous Version: $previous_version"
           # Get the current version from podspec file
-          current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $4}')
+          current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $2}')
           echo "Current Version: $current_version"
           if [ "$previous_version" != "$current_version" ]; then
             echo "Version has changed from $previous_version to $current_version."
