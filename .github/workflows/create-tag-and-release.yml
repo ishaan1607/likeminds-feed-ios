@@ -23,9 +23,11 @@ jobs:
                 
                 # Get the previous version from the last release tag
                 export previous_version=$(git describe --tags --abbrev=0)
+                echo "Previous Version: $previous_version"
                 
                 # Get the current version from package.json
-                export current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $2}' | tr -d '\n' | sed 's/[^0-9.]//g; s/\..$//')
+                export current_version=$(grep 'spec.version' LikeMindsFeedCore.podspec | awk -F '"' '/spec.version/{print $4}' | tr -d '\n' | sed 's/[^0-9.]//g; s/\..$//')
+                echo "Previous Version: $current_version"
                 
                 if [[ "$previous_version" != "v$current_version" ]]; then
                     echo "Version has changed from $previous_version to v$current_version."
